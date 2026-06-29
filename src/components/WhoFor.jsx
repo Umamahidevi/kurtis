@@ -60,13 +60,13 @@ export default function WhoFor() {
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it, i) => (
-            <Reveal key={it.title} delay={i * 90} className="text-left">
+            <Reveal key={it.title} delay={i * 90} className="text-center sm:text-left">
               <div className="group cursor-default">
-                <div className={`grid h-14 w-14 place-items-center rounded-2xl text-white shadow-soft transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 ${it.color}`}>
+                <div className={`mx-auto sm:mx-0 grid h-14 w-14 place-items-center rounded-2xl text-white shadow-soft transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 ${it.color}`}>
                   <span className="h-7 w-7">{it.icon}</span>
                 </div>
                 <h3 className="mt-5 text-lg font-bold text-ink">{it.title}</h3>
-                <p className="mt-2 max-w-[9.5rem] text-sm leading-relaxed text-slatey">{it.body}</p>
+                <p className="mt-2 mx-auto sm:mx-0 max-w-[9.5rem] text-sm leading-relaxed text-slatey">{it.body}</p>
                 <a href="#" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand transition-all duration-200 hover:gap-2.5 hover:underline">
                   Learn more <span aria-hidden="true">›</span>
                 </a>
@@ -83,4 +83,5 @@ export default function WhoFor() {
       </div>
     </section>
   )
+}
 }
