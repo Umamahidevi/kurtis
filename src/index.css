@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-body text-ink antialiased bg-white;
+  }
+  h1, h2, h3, h4 { @apply font-display; }
+}
+
+@layer components {
+  /* the short accent underline that sits beneath section titles */
+  .title-rule {
+    @apply mx-auto mt-4 h-2 w-24 rounded-full bg-brand;
+  }
+  .pill-btn {
+    @apply inline-flex items-center justify-center rounded-full font-display font-semibold
+           transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.97]
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/30;
+  }
+  /* gentle lift used on cards */
+  .card-hover {
+    @apply transition duration-300 ease-out hover:-translate-y-2 hover:shadow-card;
+  }
+  /* shimmer sweep on primary CTAs */
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: -2px 0;
+    width: 28%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent);
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .btn-shine:hover::after {
+    opacity: 1;
+    animation: shimmer 0.75s ease forwards;
+  }
+}
+
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(255,198,41,0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(255,198,41,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,198,41,0); }
+}
+.animate-pulseRing { animation: pulseRing 1.8s ease-out infinite; }
+
+@keyframes barFill {
+  from { width: 0% }
+  to   { width: 100% }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* hide scrollbars on carousels */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
